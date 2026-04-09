@@ -1,13 +1,9 @@
-FROM node:18
-
+FROM node:18-alpine AS base
 WORKDIR /app
 
+FROM base AS production
 COPY package*.json ./
-
-RUN npm install
-
+RUN npm ci --only=production
 COPY . .
-
 EXPOSE 3000
-
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["node", "server.cjs"]
