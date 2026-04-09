@@ -1,0 +1,10 @@
+tunnel: 68be537d-a99d-4e63-b086-6bd38c670fb1
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  - hostname: demo.hannahevents.org
+    path: /api
+    service: http://backend:5000
+  - hostname: demo.hannahevents.org
+    service: http://frontend:3000
+  - service: http_status:404
